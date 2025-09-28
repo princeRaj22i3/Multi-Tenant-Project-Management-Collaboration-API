@@ -4,6 +4,7 @@ const port = 3001;
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 mongoose.connect('mongodb://127.0.0.1:27017/MTPMCA');
+const verifyToken = require('./middlewares/authMiddleware');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));

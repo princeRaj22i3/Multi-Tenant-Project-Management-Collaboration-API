@@ -1,0 +1,15 @@
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+const jwtKey = process.env.JWT_AUTH_KEY;
+
+async function verifyToken(req,res,next){
+    const token = req.cookies.token;
+    if(!token) return res.status(401).json({msg:"Token not found. Please login"});
+    jwt.verify(token,jwtKey,(err,user)=>{
+        if(err) return res.status(403).json({msg:"Token verification failed"});
+        req.user=user;
+        next();
+    })
+}
+
+module.exports = verifyToken;
