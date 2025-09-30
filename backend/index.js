@@ -17,12 +17,14 @@ app.use(cookieParser());
 const verifyToken = require('./middlewares/authMiddleware');
 const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
-const createOrg = require('./routes/org');
+const orgRouter = require('./routes/org');
+const projectRouter = require('./routes/project');
 
 app.use('/signup',signupRouter);
 app.use('/login',loginRouter);
 app.use(verifyToken);
-app.use('/org',createOrg);
+app.use('/org',orgRouter);
+app.use('/project',projectRouter);
 
 app.listen(port,()=>{
     console.log(`App running at http://localhost:${port}`);
