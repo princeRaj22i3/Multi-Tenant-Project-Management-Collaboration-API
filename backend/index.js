@@ -19,12 +19,14 @@ const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
 const orgRouter = require('./routes/org');
 const projectRouter = require('./routes/project');
+const taskRouter = require('./routes/task')
 
 app.use('/signup',signupRouter);
 app.use('/login',loginRouter);
 app.use(verifyToken);
 app.use('/org',orgRouter);
 app.use('/project',projectRouter);
+app.use('/task',taskRouter);
 
 app.listen(port,()=>{
     console.log(`App running at http://localhost:${port}`);

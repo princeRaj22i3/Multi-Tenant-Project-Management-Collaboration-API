@@ -52,7 +52,7 @@ router.post('/status/:projectId',async(req,res)=>{
         {status:status},
         {new:true}
     )
-    return res.status(200).json({msg:"status updated"});
+    return res.status(200).json({msg:`status updated. Project ${status}`});
 })
 
 //to delete a project
@@ -118,7 +118,7 @@ router.post('/:orgId',async(req,res)=>{
     const project = await projectModel.findById(projectId);
     if(!project) return res.status(404).json({msg:"Project not found"});
 
-    if(project.orgId!==orgId) return res.status(403).json({msg:"Project doesn't belong in this organisation"});
+    if(project.orgId.toString()!==orgId) return res.status(403).json({msg:"Project doesn't belong in this organisation"});
 
     const org = await orgModel.findById(orgId);
 
