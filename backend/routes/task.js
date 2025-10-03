@@ -3,7 +3,7 @@ const router = express.Router();
 const orgModel = require('../models/org');
 const userModel = require('../models/user');
 const projectModel = require('../models/project');
-const taskModel = require('../models/project');
+const taskModel = require('../models/task');
 
 //to create a task
 router.post('/create/:projectId',async(req,res)=>{
@@ -29,7 +29,7 @@ router.post('/create/:projectId',async(req,res)=>{
         dueDate:dueDate||null,
     })
 
-    const user = await userModel.findById(requester.userId);
+    const user = await userModel.findById(req.user.id);
     return res.status(201).json({msg:`Task ${title} created by ${user.username}`,task:newTask});
 })
 
@@ -177,6 +177,24 @@ router.post('/:projectId',async (req,res)=>{
 
     const user = await userModel.findById(req.user.id);
     return res.status(200).json({msg:`${task.title} updated by ${user.username}`,task:newTask});
+})
+
+//to fetch all tasks
+router.get('/:projectId',async(req,res)=>{
+    const { projectId } = req.params;
+    const project = await projectModel.findById(projectId);
+    if (!project) return res.status(404).json({ msg: "Project not found" });
+
+    const org = await orgModel.findById(project.orgId);
+    if (!org) return res.status(404).json({ msg: "Organisation not found" });
+    const member = org.members.find(m => m.userId.toString() === req.user.id);
+    if (!member) return res.status(403).json({ msg: "Permission denied" });
+
+    const tasks = await taskModel.find({ projectId })
+      .populate('assignees', 'username')
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({ tasks });
 })
 
 module.exports = router;
