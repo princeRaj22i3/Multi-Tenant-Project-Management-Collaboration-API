@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const orgModel = require('../models/org');
 const userModel = require('../models/user')
-
+ 
 
 //to create an organisation
 router.post('/create', async(req,res)=>{
@@ -113,4 +113,17 @@ router.delete('/delete/:orgId', async(req,res)=>{
     return res.status(200).json({ msg:`${org.orgName} is disassembled`});
 })
 
+//to fetch all members of an org
+router.get('/members/:orgId', async(req,res)=>{
+    const {orgId} = req.params;
+ 
+    const org = await orgModel.findById(orgId)
+    .populate('members.userId','username')
+    if(!org) return res.status(404).json("Orgaisation not found");
+
+    const requester = org.members.find(m=>m.userId.toString()===req.user.id);
+    if(!requester) return res.status(403).json({msg:"Permission denied"});
+
+    res.status(200).json({members:org.members})
+})
 module.exports = router;
