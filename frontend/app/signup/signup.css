@@ -1,0 +1,94 @@
+.signupBody {
+    background-color: #030E1A;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+}
+
+.containerDiv {
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    padding: 0 1rem;
+}
+
+.containerDiv h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #F1F5F9;
+}
+
+.signupDiv {
+    width: 100%;
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    color: #E5E7EB;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputParamsSignup {
+    width: 100%;
+    width: 300px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #E5E7EB;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.inputParamsSignup::placeholder {
+    color: rgba(229, 231, 235, 0.7);
+}
+
+.inputParamsSignup:focus {
+    border-color: #3B82F6;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+}
+
+.submitParamsSignup {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 10px;
+    background: #3B82F6;
+    color: #F1F5F9;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submitParamsSignup:hover {
+    background: #60A5FA;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.errorText {
+    color: #F87171;
+    font-size: 0.85rem;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    text-align: left;
+}
+
+.successText {
+    color: #34D399; /* soft green */
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    text-align: center;
+}

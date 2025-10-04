@@ -3,13 +3,16 @@ const app = express();
 const port = 3001;
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/MTPMCA')
 .then(()=>{console.log("Mongo connected")})
 .catch((err)=>console.error("Mongo connection failed",err))
 
-
+app.use(cors({
+    origin: 'http://localhost:3000'
+  }));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(cookieParser());
