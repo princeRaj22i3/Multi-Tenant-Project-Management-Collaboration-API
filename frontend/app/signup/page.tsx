@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import './signup.css';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 
 type Inputs = {
   username: string;
@@ -20,6 +21,7 @@ const Signup: React.FC = () => {
 
   const delay = (s: number) => new Promise<void>(resolve => setTimeout(resolve, s * 1000));
 
+  const router = useRouter();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setServerMsg(null);
     setServerError(null);
@@ -39,6 +41,9 @@ const Signup: React.FC = () => {
       }
 
       setServerMsg(res.msg);
+      await delay(1.5);
+      router.push('/login')
+      
     } catch (err) {
       console.error(err);
       setServerError('Something went wrong. Try again.');

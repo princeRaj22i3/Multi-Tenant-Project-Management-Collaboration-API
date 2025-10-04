@@ -80,14 +80,14 @@
 .errorText {
     color: #F87171;
     font-size: 0.85rem;
-    margin-top: -0.5rem;
+    margin-top: 1rem;
     margin-bottom: 0.5rem;
     display: block;
     text-align: left;
 }
 
 .successText {
-    color: #34D399; /* soft green */
+    color: #34D399;
     font-size: 0.9rem;
     margin-top: 0.5rem;
     text-align: center;
