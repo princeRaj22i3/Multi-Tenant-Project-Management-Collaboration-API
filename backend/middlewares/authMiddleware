@@ -3,6 +3,9 @@ require('dotenv').config();
 const jwtKey = process.env.JWT_AUTH_KEY;
 
 async function verifyToken(req,res,next){
+    if (req.method==='OPTIONS'){
+        return next();
+    }
     const token = req.cookies.token;
     if(!token) return res.status(401).json({msg:"Token not found. Please login"});
     jwt.verify(token,jwtKey,(err,user)=>{

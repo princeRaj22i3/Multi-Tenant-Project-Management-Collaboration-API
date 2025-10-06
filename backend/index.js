@@ -11,7 +11,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/MTPMCA')
 .catch((err)=>console.error("Mongo connection failed",err))
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: 'http://localhost:3000',
+    credentials:true,
   }));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));

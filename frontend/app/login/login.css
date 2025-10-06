@@ -1,0 +1,102 @@
+.loginBody {
+    background-color: #030E1A;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .containerDivLogin {
+    text-align: center;
+  }
+  
+  .containerDivLogin h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #93C5FD;
+    width: 30vw;
+    text-align: center;
+  }
+  
+  .loginDiv {
+    height: 30vh;
+    width: 30vw;
+    border-radius: 2rem;
+    background-color: rgba(255, 255, 255, 0.08); 
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 2.5rem 3rem;
+    color: #E5E7EB;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .inputParamsLogin {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #E5E7EB;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  .inputParamsLogin::placeholder {
+    color: rgba(229, 231, 235, 0.7);
+  }
+  
+  .inputParamsLogin:focus {
+    border-color: #60A5FA;
+    box-shadow: 0 0 8px rgba(96, 165, 250, 0.5);
+  }
+  
+  .submitParamsLogin {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #2563EB, #1E40AF); 
+    color: #F1F5F9;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .submitParamsLogin:hover {
+    background: linear-gradient(90deg, #3B82F6, #1D4ED8);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    transform: translateY(-2px);
+  }
+  
+  .submitParamsLogin:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .successText {
+    color: #34D399;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  
+  .errorText {
+    color: #F87171;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    text-align: left;
+  }
+  
