@@ -126,4 +126,14 @@ router.get('/members/:orgId', async(req,res)=>{
 
     res.status(200).json({members:org.members})
 })
+
+//to fetch all organisations
+router.get('/', async(req,res)=>{
+    const org = await orgModel
+    .find({},'orgName')
+    .sort({createdAt:-1})
+
+    res.status(200).json({org});
+})
+
 module.exports = router;
