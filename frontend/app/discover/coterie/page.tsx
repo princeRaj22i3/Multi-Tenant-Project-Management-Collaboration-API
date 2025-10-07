@@ -1,5 +1,8 @@
+'use client'
 import React from 'react';
 import './org.css'
+import Link from 'next/link';
+import { useState } from 'react';
 
 export const Card: React.FC = () => {
     return (
@@ -14,9 +17,35 @@ export const Card: React.FC = () => {
     )
 }
 
+export const CreateOrg:React.FC = () => {
+    const timestamp = Date.now();
+    const date = new Date(timestamp)
+    const month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
+    const day = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    return(
+        <div>
+            <div>Last login: {day[date.getDay()]} {month[date.getMonth()]} {date.getDate()} {date.getHours()}:{date.getMinutes()}:{date.getSeconds()}</div>
+            <div>{}</div>
+        </div>
+    )
+}
+
 const Org: React.FC = () => {
+    const [create,isCreate] = useState<boolean>(false); 
+    const [popUpcreateOrg, setpopUpcreateOrg] = useState<boolean>(true)
     return (
         <div className='orgBody'>
+            {popUpcreateOrg&& <div className='createPopUpDiv'><CreateOrg/></div>}
+
+            <div className='discoverOrg'>
+                <div className='discoverOrgHeader'>Discover</div>
+                <div className='discoverOrgParams coteriesOrg' onMouseEnter={()=>{isCreate(true)}} onMouseLeave={()=>isCreate(false)}>
+                    <Link href='http://localhost:3000/discover/coterie'>Coteries</Link>
+                    {create && <div style={{fontWeight:'100', fontSize:'30px', cursor:'pointer'}} onClick={()=>{setpopUpcreateOrg(true)}}>+</div>}
+                </div>
+                <div className='discoverOrgParams'><Link href='http://localhost:3000/discover/associates'>Associates</Link></div>
+            </div>
+
             <div className='orgMainContainer'>
 
                 <div className='headerDivOrg'>
